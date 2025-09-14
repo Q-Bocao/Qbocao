@@ -1,7 +1,7 @@
 [
   {
     "nombre": "Beso de Ángel Q’Bocao",
-    "descripcion": "Bizcochuelo de vainilla, quesillo/flan y tres leches con crema chantilly con canela.",
+    "descripcion": "Bizcochuelo de vainilla, quesillo/flan y tres leches, cubierto con crema chantilly con canela. ¡Un postre digno del cielo!",
     "disponible": true,
     "imagen": "images/beso-de-angel-qbocao.webp.jpg",
     "tamaños": [
@@ -10,8 +10,28 @@
     ]
   },
   {
+    "nombre": "Bocao Tentación",
+    "descripcion": "Bizcocho húmedo de chocolate, ganache estilo Bariloche y frosting de chantilly. ¡Un deleite intenso!",
+    "disponible": true,
+    "imagen": "images/bocao-tentacion.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 5200 },
+      { "nombre": "Chico", "precio": 3900 }
+    ]
+  },
+  {
+    "nombre": "Chocobocao",
+    "descripcion": "El irresistible clásico argentino: base de Chocolinas, crema chocotorta y un suave frosting de chantilly.",
+    "disponible": true,
+    "imagen": "images/chocobocao.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 5300 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
+  },
+  {
     "nombre": "Q’oreo",
-    "descripcion": "Base de galletas Oreo, crema de Oreo y una capa final de chantilly.",
+    "descripcion": "Base de galletas Oreo, crema de Oreo y una capa ligera de chantilly.",
     "disponible": true,
     "imagen": "images/q-oreo.webp.jpg",
     "tamaños": [
@@ -20,18 +40,8 @@
     ]
   },
   {
-    "nombre": "Flan solo",
-    "descripcion": "Flan clásico con caramelo.",
-    "disponible": false,
-    "imagen": "images/flan-solo.webp.jpg",
-    "tamaños": [
-      { "nombre": "Grande", "precio": 4000 },
-      { "nombre": "Chico", "precio": 3000 }
-    ]
-  },
-  {
     "nombre": "Bocao Frutal",
-    "descripcion": "Postre fresco con frutas de estación.",
+    "descripcion": "Capas de bizcochuelo, dulce de leche, flan y fruta, cubiertos con chantilly. ¡Una mezcla única e irresistible!",
     "disponible": true,
     "imagen": "images/bocao-frutal.webp.jpg",
     "tamaños": [
@@ -40,28 +50,109 @@
     ]
   },
   {
-    "nombre": "Bocao Tentación",
-    "descripcion": "Postre tentador de chocolate y crema.",
+    "nombre": "Bocao Lemon",
+    "descripcion": "Nuestro Lemon Pie: Base de galleta de vainilla, suave crema de limón y un merengue dorado que se derrite en la boca.",
     "disponible": true,
-    "imagen": "images/bocao-tentacion.webp.jpg",
+    "imagen": "images/logo.png",
     "tamaños": [
-      { "nombre": "Grande", "precio": 5200 },
-      { "nombre": "Chico", "precio": 4000 }
+      { "nombre": "Grande", "precio": 4800 },
+      { "nombre": "Chico", "precio": 3600 }
     ]
   },
   {
-    "nombre": "Chocobocao",
-    "descripcion": "Delicioso pastel de chocolate.",
+    "nombre": "Cheesecake Q’Bocao",
+    "descripcion": "Base de galleta, crema de queso y mermelada.",
     "disponible": true,
-    "imagen": "images/chocobocao.webp.jpg",
+    "imagen": "images/logo.png",
     "tamaños": [
-      { "nombre": "Grande", "precio": 5300 },
-      { "nombre": "Chico", "precio": 4100 }
+      { "nombre": "Grande", "precio": 4800 },
+      { "nombre": "Chico", "precio": 3600 }
     ]
   },
   {
-    "nombre": "Tres leches",
-    "descripcion": "Bizcocho esponjoso bañado en tres tipos de leche.",
+    "nombre": "Yogurt con frutas",
+    "descripcion": "Yogurt natural con frutas y granola.",
+    "disponible": true,
+    "imagen": "images/logo.png",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3000 }
+    ]
+  },
+  {
+    "nombre": "Ensalada de frutas",
+    "descripcion": "Ensalada de frutas.",
+    "disponible": true,
+    "imagen": "images/logo.png",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3000 }
+    ]
+  },
+  {
+    "nombre": "Ensalada de frutas con crema",
+    "descripcion": "Ensalada de frutas con crema chantilly.",
+    "disponible": true,
+    "imagen": "images/logo.png",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3200 }
+    ]
+  },
+  {
+    "nombre": "Ensalada de frutas con DDL",
+    "descripcion": "Ensalada de frutas con dulce de leche.",
+    "disponible": true,
+    "imagen": "images/logo.png",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3200 }
+    ]
+  },
+  {
+    "nombre": "Ensalada de frutas mixta",
+    "descripcion": "Ensalada de frutas con crema chantilly y dulce de leche.",
+    "disponible": true,
+    "imagen": "images/logo.png",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3500 }
+    ]
+  },
+  {
+    "nombre": "Flan con crema",
+    "descripcion": "Flan con crema chantilly.",
+    "disponible": true,
+    "imagen": "images/logo.png",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3500 }
+    ]
+  },
+  {
+    "nombre": "Flan con DDL",
+    "descripcion": "Flan con dulce de leche.",
+    "disponible": true,
+    "imagen": "images/logo.png",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3500 }
+    ]
+  },
+  {
+    "nombre": "Flan mixto",
+    "descripcion": "Flan con crema chantilly y dulce de leche.",
+    "disponible": true,
+    "imagen": "images/logo.png",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3700 }
+    ]
+  },
+  {
+    "nombre": "Flan solo",
+    "descripcion": "Flan clásico.",
+    "disponible": false,
+    "imagen": "images/flan-solo.webp.jpg",
+    "tamaños": [
+      { "nombre": "Único", "precio": 3000 }
+    ]
+  },
+  {
+    "nombre": "Tres Leches",
+    "descripcion": "Bizcochuelo de vainilla, tres leches, chantilly.",
     "disponible": true,
     "imagen": "images/tres-leches.webp.jpg",
     "tamaños": [
