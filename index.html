@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Q’bocao — Hecho para tentarte</title>
   <meta name="description" content="Q’bocao: postres artesanales. Hecho para tentarte.">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -41,10 +40,10 @@
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> JUCA — Todos los derechos reservados.</p>
+    <p>© <span id="year"></span> Q’bocao — Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Modal del carrito -->
+  <!-- Modal carrito -->
   <div id="cartModal" class="modal">
     <div class="cart-content">
       <span class="close-cart">&times;</span>
@@ -55,8 +54,34 @@
     </div>
   </div>
 
+  <!-- Modal checkout formulario -->
+  <div id="checkoutModal" class="modal">
+    <div class="checkout-content">
+      <span class="close-checkout">&times;</span>
+      <h2>Datos del pedido</h2>
+      <form id="checkoutForm">
+        <label>Nombre y Apellido:<br><input type="text" name="nombre" required></label><br>
+        <label>Dirección (Calle y altura):<br><input type="text" name="direccion" required></label><br>
+        <label>Código Postal:<br><input type="text" name="cp" required></label><br>
+        <label>Piso y Departamento:<br><input type="text" name="piso"></label><br>
+        <label>Método de pago:<br>
+          <select name="pago" required>
+            <option value="">Seleccionar</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="transferencia">Transferencia</option>
+          </select>
+        </label>
+        <div id="transferInfo" style="display:none; margin-top:10px; font-size:14px; color:#333;">
+          <strong>Alias:</strong> TU.ALIAS.AQUI<br>
+          <strong>CBU:</strong> TU.CBU.AQUI
+        </div>
+        <button type="submit" class="btn-enviar">Enviar pedido por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
   <!-- Botón flotante carrito -->
-  <button id="openCart" class="floating-cart">🛒</button>
+  <button id="openCart" class="floating-cart">🛒 <span id="cartCount">0</span></button>
 
   <script src="app.js"></script>
 </body>
