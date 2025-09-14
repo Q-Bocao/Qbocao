@@ -4,48 +4,48 @@
     "descripcion": "Bizcochuelo de vainilla, quesillo/flan y tres leches con crema chantilly con canela.",
     "precio": 5500,
     "disponible": true,
-    "imagen": "images/beso-angel-qbocao.jpg"
+    "imagen": "images/beso-de-angel-qbocao.webp.jpg"
   },
   {
     "nombre": "Q’oreo",
     "descripcion": "Base de galletas Oreo, crema de Oreo y una capa final de chantilly.",
     "precio": 5000,
     "disponible": true,
-    "imagen": "images/q-oreo.jpg"
+    "imagen": "images/q-oreo.webp.jpg"
   },
   {
     "nombre": "Flan solo",
     "descripcion": "Flan clásico con caramelo.",
     "precio": 4000,
     "disponible": false,
-    "imagen": "images/flan-solo.jpg"
+    "imagen": "images/flan-solo.webp.jpg"
   },
   {
     "nombre": "Bocao Frutal",
     "descripcion": "Postre fresco con frutas de estación.",
     "precio": 4800,
     "disponible": true,
-    "imagen": "images/bocao-frutal.jpg"
+    "imagen": "images/bocao-frutal.webp.jpg"
   },
   {
     "nombre": "Bocao Tentación",
     "descripcion": "Postre tentador de chocolate y crema.",
     "precio": 5200,
     "disponible": true,
-    "imagen": "images/bocao-tentacion.jpg"
+    "imagen": "images/bocao-tentacion.webp.jpg"
   },
   {
     "nombre": "Chocobocao",
     "descripcion": "Delicioso pastel de chocolate.",
     "precio": 5300,
     "disponible": true,
-    "imagen": "images/chocobocao.jpg"
+    "imagen": "images/chocobocao.webp.jpg"
   },
   {
     "nombre": "Tres leches",
     "descripcion": "Bizcocho esponjoso bañado en tres tipos de leche.",
     "precio": 5000,
     "disponible": true,
-    "imagen": "images/tres-leches.jpg"
+    "imagen": "images/tres-leches.webp.jpg"
   }
 ]
