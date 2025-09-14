@@ -4,20 +4,20 @@
     "descripcion": "Bizcochuelo de vainilla, quesillo/flan y tres leches con crema chantilly con canela.",
     "precio": 5500,
     "disponible": true,
-    "imagen": "images/beso-de-angel-qbocao.webp"
+    "imagen": "images/beso-de-angel-qbocao.webp.jpg"
   },
   {
     "nombre": "Q’oreo",
     "descripcion": "Base de galletas Oreo, crema de Oreo y una capa final de chantilly.",
     "precio": 5000,
     "disponible": true,
-    "imagen": "images/q-oreo.webp"
+    "imagen": "images/q-oreo.webp.jpg"
   },
   {
     "nombre": "Flan solo",
     "descripcion": "Flan clásico con caramelo.",
     "precio": 4000,
     "disponible": false,
-    "imagen": "images/flan-solo.webp"
+    "imagen": "images/flan-solo.webp.jpg"
   }
 ]
