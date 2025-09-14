@@ -2,11 +2,10 @@ const grid = document.getElementById('grid');
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
-// Cargar productos desde el JSON
+// Cargar productos desde JSON
 fetch('data/postres.json')
   .then(r => r.json())
   .then(items => {
-    // Ordenar disponibles primero
     items.sort((a,b)=> (b.disponible - a.disponible) || a.nombre.localeCompare(b.nombre));
     const frag = document.createDocumentFragment();
     items.forEach(item => {
@@ -31,10 +30,6 @@ fetch('data/postres.json')
       frag.appendChild(card);
     });
     grid.appendChild(frag);
-  })
-  .catch(err => {
-    grid.innerHTML = '<p>Error cargando los postres. Verificá el archivo data/postres.json</p>';
-    console.error(err);
   });
 
 // --- Carrito ---
@@ -45,8 +40,8 @@ const cartTotal = document.getElementById('cartTotal');
 const checkoutBtn = document.getElementById('checkoutBtn');
 const openCartBtn = document.getElementById('openCart');
 const closeCartBtn = document.querySelector('.close-cart');
+const cartCount = document.getElementById('cartCount');
 
-// Agregar producto al carrito
 grid.addEventListener('click', e => {
   if(e.target.classList.contains('add-to-cart')){
     const nombre = e.target.dataset.nombre;
@@ -70,28 +65,57 @@ function updateCart(){
     cartItemsList.appendChild(li);
   });
   cartTotal.textContent = `Total: $ ${total.toLocaleString('es-AR')}`;
+  cartCount.textContent = cart.length;
 }
 
-// Abrir/cerrar carrito
 openCartBtn.onclick = ()=>{ cartModal.style.display='block'; };
 closeCartBtn.onclick = ()=>{ cartModal.style.display='none'; };
 cartModal.onclick = (e)=>{ if(e.target===cartModal) cartModal.style.display='none'; };
 
-// Checkout
+// --- Checkout modal ---
+const checkoutModal = document.getElementById('checkoutModal');
+const checkoutForm = document.getElementById('checkoutForm');
+const closeCheckoutBtn = document.querySelector('.close-checkout');
+const transferInfo = document.getElementById('transferInfo');
+
 checkoutBtn.onclick = ()=>{
   if(cart.length===0){ alert('El carrito está vacío'); return;}
-  const nombre = prompt('Nombre y Apellido:');
-  const direccion = prompt('Dirección (calle, altura, CP, piso/depto):');
-  const metodo = prompt('Método de pago (efectivo / transferencia):').toLowerCase();
+  checkoutModal.style.display='block';
+};
+
+closeCheckoutBtn.onclick = ()=>{ checkoutModal.style.display='none'; };
+checkoutModal.onclick = (e)=>{ if(e.target===checkoutModal) checkoutModal.style.display='none'; };
+
+// Mostrar info transferencia según selección
+checkoutForm.pago.addEventListener('change', ()=>{
+  if(checkoutForm.pago.value==='transferencia'){
+    transferInfo.style.display='block';
+  }else{
+    transferInfo.style.display='none';
+  }
+});
+
+// Enviar pedido
+checkoutForm.addEventListener('submit', e=>{
+  e.preventDefault();
+  const nombre = checkoutForm.nombre.value;
+  const direccion = checkoutForm.direccion.value;
+  const cp = checkoutForm.cp.value;
+  const piso = checkoutForm.piso.value;
+  const pago = checkoutForm.pago.value;
+
   let mensaje = `Pedido:\n`;
   cart.forEach(it=>mensaje+=`- ${it.nombre} $${it.precio}\n`);
   mensaje+=`Total: $${cart.reduce((t,it)=>t+it.precio,0)}\n\n`;
-  mensaje+=`Cliente: ${nombre}\nDirección: ${direccion}\n`;
-  if(metodo==='transferencia'){
+  mensaje+=`Cliente: ${nombre}\nDirección: ${direccion} CP:${cp} ${piso? 'Piso/Depto:'+piso:''}\n`;
+  if(pago==='transferencia'){
     mensaje+=`\nMétodo de pago: Transferencia\nAlias: TU.ALIAS.AQUI\nCBU: TU.CBU.AQUI\n`;
   }else{
     mensaje+=`\nMétodo de pago: Efectivo\n`;
   }
   const url = `https://wa.me/5491154815519?text=${encodeURIComponent(mensaje)}`;
   window.open(url,'_blank');
-};
+  checkoutModal.style.display='none';
+  cart = [];
+  updateCart();
+});
