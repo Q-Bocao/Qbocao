@@ -1,2 +1,0 @@
-Subí aquí tus fotos renombradas con nombres simples (por ejemplo beso-angel-qbocao.jpg, q-oreo.jpg, etc.)
-Una vez subidas a GitHub, el JSON usará estas rutas: images/nombre.jpg
