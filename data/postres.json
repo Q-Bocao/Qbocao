@@ -2,50 +2,71 @@
   {
     "nombre": "Beso de Ángel Q’Bocao",
     "descripcion": "Bizcochuelo de vainilla, quesillo/flan y tres leches con crema chantilly con canela.",
-    "precio": 5500,
     "disponible": true,
-    "imagen": "images/beso-de-angel-qbocao.webp.jpg"
+    "imagen": "images/beso-de-angel-qbocao.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Q’oreo",
     "descripcion": "Base de galletas Oreo, crema de Oreo y una capa final de chantilly.",
-    "precio": 5000,
     "disponible": true,
-    "imagen": "images/q-oreo.webp.jpg"
+    "imagen": "images/q-oreo.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 5000 },
+      { "nombre": "Chico", "precio": 3800 }
+    ]
   },
   {
     "nombre": "Flan solo",
     "descripcion": "Flan clásico con caramelo.",
-    "precio": 4000,
     "disponible": false,
-    "imagen": "images/flan-solo.webp.jpg"
+    "imagen": "images/flan-solo.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 4000 },
+      { "nombre": "Chico", "precio": 3000 }
+    ]
   },
   {
     "nombre": "Bocao Frutal",
     "descripcion": "Postre fresco con frutas de estación.",
-    "precio": 4800,
     "disponible": true,
-    "imagen": "images/bocao-frutal.webp.jpg"
+    "imagen": "images/bocao-frutal.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 4800 },
+      { "nombre": "Chico", "precio": 3600 }
+    ]
   },
   {
     "nombre": "Bocao Tentación",
     "descripcion": "Postre tentador de chocolate y crema.",
-    "precio": 5200,
     "disponible": true,
-    "imagen": "images/bocao-tentacion.webp.jpg"
+    "imagen": "images/bocao-tentacion.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 5200 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Chocobocao",
     "descripcion": "Delicioso pastel de chocolate.",
-    "precio": 5300,
     "disponible": true,
-    "imagen": "images/chocobocao.webp.jpg"
+    "imagen": "images/chocobocao.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 5300 },
+      { "nombre": "Chico", "precio": 4100 }
+    ]
   },
   {
     "nombre": "Tres leches",
     "descripcion": "Bizcocho esponjoso bañado en tres tipos de leche.",
-    "precio": 5000,
     "disponible": true,
-    "imagen": "images/tres-leches.webp.jpg"
+    "imagen": "images/tres-leches.webp.jpg",
+    "tamaños": [
+      { "nombre": "Grande", "precio": 5000 },
+      { "nombre": "Chico", "precio": 3800 }
+    ]
   }
 ]
