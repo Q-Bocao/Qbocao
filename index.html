@@ -3,12 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Q’bocao — Base</title>
-  <!-- Paso 1: Subí este archivo a la raíz del repo.
-       En próximos pasos agregaremos CSS, JS y el listado de postres. -->
+  <title>Q’bocao — Hecho para tentarte</title>
+  <meta name="description" content="Q’bocao: postres artesanales. Hecho para tentarte.">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Q’bocao</h1>
-  <p>Base vacía. Si ves esto en GitHub Pages, todo está OK.</p>
+  <header class="site-header">
+    <div class="brand">
+      <img src="images/logo.png" alt="Logo Q’bocao" class="logo">
+      <div>
+        <h1>Q’bocao</h1>
+        <p class="tagline">Hecho para tentarte</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="./">Inicio</a>
+      <a href="#menu">Menú</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="pill">Postres artesanales</span>
+      <h2 id="menu">Tentaciones que hablan por sí solas</h2>
+      <p>Muy pronto vas a ver aquí nuestro menú en vivo.</p>
+    </section>
+
+    <div id="grid" class="grid"></div>
+
+    <section id="contacto" style="margin-top:32px">
+      <h3>Contacto</h3>
+      <p class="grid-info">¿Tenés dudas o querés hacer un pedido? Próximamente agregamos WhatsApp directo.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Q’bocao — Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
