@@ -2,7 +2,7 @@ const grid = document.getElementById('grid');
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
-// Cargar productos desde JSON
+// Cargar productos
 fetch('data/postres.json')
   .then(r => r.json())
   .then(items => {
