@@ -2,13 +2,13 @@
 fetch('../data/postres.json')
   .then(r => r.json())
   .then(data => {
-    buildTable(data);
+    products = data;
+    buildTable();
   });
 
 let products = [];
 
-function buildTable(data){
-  products = data;
+function buildTable(){
   const container = document.getElementById('tableContainer');
   const table = document.createElement('table');
   const thead = document.createElement('thead');
@@ -18,11 +18,12 @@ function buildTable(data){
     <th>Precio</th>
     <th>Disponible</th>
     <th>Imagen</th>
+    <th>Acciones</th>
   </tr>`;
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-  data.forEach((item,i)=>{
+  products.forEach((item,i)=>{
     const tr = document.createElement('tr');
 
     // Nombre
@@ -67,12 +68,38 @@ function buildTable(data){
     tdImg.appendChild(inputImg);
     tr.appendChild(tdImg);
 
+    // Acciones
+    let tdAcc = document.createElement('td');
+    let btnDel = document.createElement('button');
+    btnDel.textContent = 'Eliminar';
+    btnDel.onclick = ()=>{
+      products.splice(i,1);
+      buildTable();
+    };
+    tdAcc.appendChild(btnDel);
+    tr.appendChild(tdAcc);
+
     tbody.appendChild(tr);
   });
 
   table.appendChild(tbody);
   container.innerHTML='';
   container.appendChild(table);
+
+  // Botón agregar producto
+  const addBtn = document.createElement('button');
+  addBtn.textContent = 'Agregar producto';
+  addBtn.onclick = ()=>{
+    products.push({
+      nombre:'Nuevo producto',
+      descripcion:'',
+      precio:0,
+      disponible:true,
+      imagen:''
+    });
+    buildTable();
+  };
+  container.appendChild(addBtn);
 }
 
 // Descargar JSON modificado
