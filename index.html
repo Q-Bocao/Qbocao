@@ -41,8 +41,22 @@
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Q’bocao — Todos los derechos reservados.</p>
+    <p>© <span id="year"></span> JUCA — Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Modal del carrito -->
+  <div id="cartModal" class="modal">
+    <div class="cart-content">
+      <span class="close-cart">&times;</span>
+      <h2>Carrito</h2>
+      <ul id="cartItems"></ul>
+      <p id="cartTotal"></p>
+      <button id="checkoutBtn">Realizar pedido</button>
+    </div>
+  </div>
+
+  <!-- Botón flotante carrito -->
+  <button id="openCart" class="floating-cart">🛒</button>
 
   <script src="app.js"></script>
 </body>
