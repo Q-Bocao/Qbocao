@@ -53,7 +53,7 @@
     "nombre": "Bocao Lemon",
     "descripcion": "Nuestro Lemon Pie: Base de galleta de vainilla, suave crema de limón y un merengue dorado que se derrite en la boca.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Grande", "precio": 4800 },
       { "nombre": "Chico", "precio": 3600 }
@@ -63,7 +63,7 @@
     "nombre": "Cheesecake Q’Bocao",
     "descripcion": "Base de galleta, crema de queso y mermelada.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Grande", "precio": 4800 },
       { "nombre": "Chico", "precio": 3600 }
@@ -73,7 +73,7 @@
     "nombre": "Yogurt con frutas",
     "descripcion": "Yogurt natural con frutas y granola.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Único", "precio": 3000 }
     ]
@@ -82,7 +82,7 @@
     "nombre": "Ensalada de frutas",
     "descripcion": "Ensalada de frutas.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Único", "precio": 3000 }
     ]
@@ -91,7 +91,7 @@
     "nombre": "Ensalada de frutas con crema",
     "descripcion": "Ensalada de frutas con crema chantilly.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Único", "precio": 3200 }
     ]
@@ -100,7 +100,7 @@
     "nombre": "Ensalada de frutas con DDL",
     "descripcion": "Ensalada de frutas con dulce de leche.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Único", "precio": 3200 }
     ]
@@ -109,7 +109,7 @@
     "nombre": "Ensalada de frutas mixta",
     "descripcion": "Ensalada de frutas con crema chantilly y dulce de leche.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Único", "precio": 3500 }
     ]
@@ -118,7 +118,7 @@
     "nombre": "Flan con crema",
     "descripcion": "Flan con crema chantilly.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Único", "precio": 3500 }
     ]
@@ -127,7 +127,7 @@
     "nombre": "Flan con DDL",
     "descripcion": "Flan con dulce de leche.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Único", "precio": 3500 }
     ]
@@ -136,7 +136,7 @@
     "nombre": "Flan mixto",
     "descripcion": "Flan con crema chantilly y dulce de leche.",
     "disponible": true,
-    "imagen": "images/logo.png",
+    "imagen": "images/logo.png.png",
     "tamaños": [
       { "nombre": "Único", "precio": 3700 }
     ]
