@@ -17,7 +17,7 @@ fetch('data/postres.json')
       // Imagen
       const img = document.createElement('img');
       img.alt = item.nombre;
-      img.src = item.imagen && item.imagen.trim() ? item.imagen : 'images/logo.png.png';
+      img.src = item.imagen && item.imagen.trim() ? item.imagen : 'images/logo.png';
       card.appendChild(img);
 
       // Contenido
@@ -63,15 +63,21 @@ const cartCount = document.getElementById('cartCount');
 grid.addEventListener('click', e => {
   if (e.target.classList.contains('add-to-cart')) {
     const nombre = e.target.dataset.nombre;
-    // buscar selector de tamaño asociado
     const sizeSelect = e.target.parentElement.querySelector('.size-select');
     let precio = 0;
     let detalle = '';
     if (sizeSelect) {
       precio = parseFloat(sizeSelect.value);
-      detalle = sizeSelect.options[sizeSelect.selectedIndex].text.split('-')[0].trim(); // nombre tamaño
+      detalle = sizeSelect.options[sizeSelect.selectedIndex].text.split('-')[0].trim();
     }
-    cart.push({ nombre, precio, detalle });
+
+    // buscar si ya existe
+    const existente = cart.find(it => it.nombre === nombre && it.detalle === detalle);
+    if (existente) {
+      existente.cantidad++;
+    } else {
+      cart.push({ nombre, precio, detalle, cantidad: 1 });
+    }
     updateCart();
   }
 });
@@ -80,9 +86,9 @@ function updateCart() {
   cartItemsList.innerHTML = '';
   let total = 0;
   cart.forEach((item, i) => {
-    total += item.precio;
+    total += item.precio * item.cantidad;
     const li = document.createElement('li');
-    li.textContent = `${item.nombre} ${item.detalle? '('+item.detalle+')':''} - $${item.precio}`;
+    li.textContent = `${item.nombre} ${item.detalle? '('+item.detalle+')':''} x${item.cantidad} - $${(item.precio*item.cantidad).toLocaleString('es-AR')}`;
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'X';
     removeBtn.onclick = () => { cart.splice(i, 1); updateCart(); };
@@ -90,7 +96,7 @@ function updateCart() {
     cartItemsList.appendChild(li);
   });
   cartTotal.textContent = `Total: $ ${total.toLocaleString('es-AR')}`;
-  cartCount.textContent = cart.length;
+  cartCount.textContent = cart.reduce((t,it)=>t+it.cantidad,0);
 }
 
 openCartBtn.onclick = () => { cartModal.style.display = 'block'; };
@@ -102,21 +108,32 @@ const checkoutModal = document.getElementById('checkoutModal');
 const checkoutForm = document.getElementById('checkoutForm');
 const closeCheckoutBtn = document.querySelector('.close-checkout');
 const transferInfo = document.getElementById('transferInfo');
+const pedidoResumen = document.getElementById('pedidoResumen');
 
 checkoutBtn.onclick = () => {
   if (cart.length === 0) { alert('El carrito está vacío'); return; }
+  renderResumen();
   checkoutModal.style.display = 'block';
 };
+
+function renderResumen(){
+  let resumen = '<h4>Resumen del pedido:</h4><ul>';
+  let total = 0;
+  cart.forEach(it=>{
+    total += it.precio*it.cantidad;
+    resumen += `<li>${it.nombre} ${it.detalle? '('+it.detalle+')':''} x${it.cantidad} - $${(it.precio*it.cantidad).toLocaleString('es-AR')}</li>`;
+  });
+  resumen += `</ul><p><strong>Total: $${total.toLocaleString('es-AR')}</strong></p>`;
+  pedidoResumen.innerHTML = resumen;
+}
 
 closeCheckoutBtn.onclick = () => { checkoutModal.style.display = 'none'; };
 checkoutModal.onclick = (e) => { if (e.target === checkoutModal) checkoutModal.style.display = 'none'; };
 
-// Mostrar info transferencia según selección
 checkoutForm.pago.addEventListener('change', () => {
   transferInfo.style.display = checkoutForm.pago.value === 'transferencia' ? 'block' : 'none';
 });
 
-// Enviar pedido
 checkoutForm.addEventListener('submit', e => {
   e.preventDefault();
   const nombre = checkoutForm.nombre.value;
@@ -126,8 +143,8 @@ checkoutForm.addEventListener('submit', e => {
   const pago = checkoutForm.pago.value;
 
   let mensaje = `Pedido:\n`;
-  cart.forEach(it => mensaje += `- ${it.nombre} ${it.detalle? '('+it.detalle+')':''} $${it.precio}\n`);
-  mensaje += `Total: $${cart.reduce((t, it) => t + it.precio, 0)}\n\n`;
+  cart.forEach(it => mensaje += `- ${it.nombre} ${it.detalle? '('+it.detalle+')':''} x${it.cantidad} $${it.precio}\n`);
+  mensaje += `Total: $${cart.reduce((t, it) => t + (it.precio * it.cantidad), 0)}\n\n`;
   mensaje += `Cliente: ${nombre}\nDirección: ${direccion} CP:${cp} ${piso ? 'Piso/Depto:' + piso : ''}\n`;
   if (pago === 'transferencia') {
     mensaje += `\nMétodo de pago: Transferencia\nAlias: TU.ALIAS.AQUI\nCBU: TU.CBU.AQUI\n`;
@@ -140,3 +157,18 @@ checkoutForm.addEventListener('submit', e => {
   cart = [];
   updateCart();
 });
+
+// --- Estado abierto/cerrado ---
+const estadoLocal = document.getElementById('estadoLocal');
+function actualizarEstado(){
+  const hora = new Date().getHours();
+  if(hora >= 19 || hora < 0){ // 19hs a 23:59hs
+    estadoLocal.textContent = "Abierto (19:00–00:00)";
+    estadoLocal.className = "estado-local estado-abierto";
+  } else {
+    estadoLocal.textContent = "Cerrado (abre a las 19:00)";
+    estadoLocal.className = "estado-local estado-cerrado";
+  }
+}
+actualizarEstado();
+setInterval(actualizarEstado, 60000); // refrescar cada minuto
