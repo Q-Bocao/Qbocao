@@ -6,6 +6,7 @@
   --accent:#b33a7b; 
   --accent-2:#7a1e52; 
   --ok:#1a7f37;
+  --closed:#c0392b;
 }
 
 *{box-sizing:border-box}
@@ -27,6 +28,9 @@ a:hover{color:var(--accent-2)}
 .tagline{margin:0;color:var(--muted);font-size:14px}
 .site-header h1{line-height:1;margin:0;font-size:22px;font-weight:700}
 .nav a{margin-left:16px;font-weight:600}
+.estado-local{margin-left:12px;font-size:14px;font-weight:600}
+.estado-abierto{color:var(--ok)}
+.estado-cerrado{color:var(--closed)}
 
 .container{max-width:1100px;margin:32px auto;padding:0 16px}
 .hero{display:grid;gap:12px;place-items:start;margin-bottom:8px}
@@ -42,7 +46,14 @@ a:hover{color:var(--accent-2)}
   transition:transform .2s, box-shadow .2s;
 }
 .card:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.08)}
-.card img{width:100%;height:160px;object-fit:cover;background:#f6edf2;cursor:pointer}
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:contain;
+  object-position:center;
+  background:#f6edf2;
+  cursor:pointer
+}
 .card-content{padding:14px 14px 10px}
 .card h3{margin:0 0 6px;font-size:18px;font-weight:600}
 .card p{margin:0 0 12px;color:var(--muted);font-size:14px;min-height:42px}
@@ -69,7 +80,7 @@ a:hover{color:var(--accent-2)}
 .modal{display:none;position:fixed;z-index:100;padding-top:60px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.6)}
 
 /* Contenido carrito */
-.cart-content{background:#fff;margin:5% auto;padding:20px;border-radius:12px;width:90%;max-width:500px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.cart-content{background:#fff;margin:5% auto;padding:20px;border-radius:12px;width:90%;max-width:500px;box-shadow:0 8px 20px rgba(0,0,0,.2);position:relative}
 .cart-content h2{margin-top:0;font-weight:700}
 .cart-content ul{list-style:none;padding:0;margin:0}
 .cart-content li{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:14px}
@@ -80,11 +91,12 @@ a:hover{color:var(--accent-2)}
 .close-cart:hover{color:#bbb}
 
 /* Checkout modal */
-.checkout-content{background:#fff;margin:5% auto;padding:20px;border-radius:12px;width:90%;max-width:500px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.checkout-content{background:#fff;margin:5% auto;padding:20px;border-radius:12px;width:90%;max-width:500px;box-shadow:0 8px 20px rgba(0,0,0,.2);position:relative}
 .checkout-content h2{margin-top:0;font-weight:700}
 .checkout-content label{display:block;margin-top:10px;font-size:14px;font-weight:500}
 .checkout-content input, .checkout-content select{width:100%;padding:8px;margin-top:2px;border:1px solid #ddd;border-radius:6px}
 .btn-enviar{background:var(--accent);color:#fff;border:none;padding:12px 16px;border-radius:8px;cursor:pointer;margin-top:16px;width:100%;font-size:15px;font-weight:600}
 .btn-enviar:hover{background:var(--accent-2)}
+.pedido-resumen{background:#f9f9f9;padding:10px;border-radius:8px;font-size:14px;margin-bottom:12px}
 
 .site-footer{padding:32px;text-align:center;color:var(--muted);font-size:14px}
