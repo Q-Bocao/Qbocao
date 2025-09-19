@@ -11,7 +11,7 @@
 <body>
   <header class="site-header">
     <div class="brand">
-      <img src="images/logo.png.png" alt="Logo Q’bocao" class="logo">
+      <img src="images/logo.png" alt="Logo Q’bocao" class="logo">
       <div>
         <h1>Q’bocao</h1>
         <p class="tagline">Hecho para tentarte</p>
@@ -19,6 +19,7 @@
     </div>
     <nav class="nav">
       <a href="./">Inicio</a>
+      <span id="estadoLocal" class="estado-local"></span>
       <a href="#menu">Menú</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -35,7 +36,7 @@
 
     <section id="contacto" style="margin-top:32px">
       <h3>Contacto</h3>
-      <p class="grid-info">¿Tenés dudas o querés hacer un pedido? Próximamente agregamos WhatsApp directo.</p>
+      <p class="grid-info">¿Tenés alguna consulta? Estamos acá para ayudarte con tu pedido o despejar tus dudas. ¡Escribinos y te respondemos al instante!</p>
     </section>
   </main>
 
@@ -59,6 +60,7 @@
     <div class="checkout-content">
       <span class="close-checkout">&times;</span>
       <h2>Datos del pedido</h2>
+      <div id="pedidoResumen" class="pedido-resumen"></div>
       <form id="checkoutForm">
         <label>Nombre y Apellido:<br><input type="text" name="nombre" required></label><br>
         <label>Dirección (Calle y altura):<br><input type="text" name="direccion" required></label><br>
