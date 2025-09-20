@@ -160,15 +160,36 @@ checkoutForm.addEventListener('submit', e => {
 
 // --- Estado abierto/cerrado ---
 const estadoLocal = document.getElementById('estadoLocal');
+
 function actualizarEstado(){
-  const hora = new Date().getHours();
-  if(hora >= 19 || hora < 0){ // 19hs a 23:59hs
-    estadoLocal.textContent = "Abierto (19:00–00:00)";
-    estadoLocal.className = "estado-local estado-abierto";
+  const ahora = new Date();
+  const hora = ahora.getHours();
+  const dia = ahora.getDay(); // 0=Dom, 1=Lun, ..., 6=Sab
+
+  if (dia >= 1 && dia <= 5) { 
+    // Lunes a Viernes: 19 a 00 hs
+    if (hora >= 19 || hora < 0) {
+      estadoLocal.textContent = "Abierto (Lun–Vie 19:00–00:00)";
+      estadoLocal.className = "estado-local estado-abierto";
+    } else {
+      estadoLocal.textContent = "Cerrado (abre a las 19:00)";
+      estadoLocal.className = "estado-local estado-cerrado";
+    }
+  } else if (dia === 6) { 
+    // Sábado: 12 a 23 hs
+    if (hora >= 12 && hora < 23) {
+      estadoLocal.textContent = "Abierto (Sáb 12:00–23:00)";
+      estadoLocal.className = "estado-local estado-abierto";
+    } else {
+      estadoLocal.textContent = "Cerrado (abre el sábado 12:00)";
+      estadoLocal.className = "estado-local estado-cerrado";
+    }
   } else {
-    estadoLocal.textContent = "Cerrado (abre a las 19:00)";
+    // Domingo: cerrado
+    estadoLocal.textContent = "Cerrado (domingo sin atención)";
     estadoLocal.className = "estado-local estado-cerrado";
   }
 }
+
 actualizarEstado();
 setInterval(actualizarEstado, 60000); // refrescar cada minuto
