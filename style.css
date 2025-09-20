@@ -117,3 +117,73 @@ a:hover{color:var(--accent-2)}
 .social-icons a:hover {
   color: var(--accent-2);
 }
+
+/* ============================= */
+/* 📱 Ajustes responsive móviles */
+/* ============================= */
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 16px;
+  }
+  .nav {
+    margin-top: 8px;
+  }
+  .nav a {
+    margin-left: 8px;
+    font-size: 14px;
+  }
+  .hero h2 {
+    font-size: 22px;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+  .card img {
+    height: 160px;
+  }
+  .card h3 {
+    font-size: 16px;
+  }
+  .card p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+  .site-header h1 {
+    font-size: 18px;
+  }
+  .nav a {
+    font-size: 13px;
+  }
+  .hero h2 {
+    font-size: 20px;
+  }
+  .pill {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  .card img {
+    height: 140px;
+  }
+  .card h3 {
+    font-size: 15px;
+  }
+  .card p {
+    font-size: 12px;
+  }
+  .add-to-cart {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .social-icons a {
+    font-size: 20px;
+    margin: 0 8px;
+  }
+}
