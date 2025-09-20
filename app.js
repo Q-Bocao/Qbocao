@@ -151,7 +151,7 @@ checkoutForm.addEventListener('submit', e => {
   } else {
     mensaje += `\nMétodo de pago: Efectivo\n`;
   }
-  const url = `https://wa.me/5491154815519?text=${encodeURIComponent(mensaje)}`;
+  const url = `https://wa.me/5491152619603?text=${encodeURIComponent(mensaje)}`;
   window.open(url, '_blank');
   checkoutModal.style.display = 'none';
   cart = [];
