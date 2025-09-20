@@ -5,16 +5,9 @@
     "disponible": true,
     "imagen": "images/beso-de-angel-qbocao.webp.jpg",
     "tamaños": [
-      {
-        "nombre": "Grande",
-        "precio": 5500
-      },
-      {
-        "nombre": "Chico",
-        "precio": 4000
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Bocao Tentación",
@@ -22,16 +15,9 @@
     "disponible": true,
     "imagen": "images/bocao-tentacion.webp.jpg",
     "tamaños": [
-      {
-        "nombre": "Grande",
-        "precio": 5500
-      },
-      {
-        "nombre": "Chico",
-        "precio": 4000
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Chocobocao",
@@ -39,16 +25,9 @@
     "disponible": true,
     "imagen": "images/chocobocao.webp.jpg",
     "tamaños": [
-      {
-        "nombre": "Grande",
-        "precio": 5500
-      },
-      {
-        "nombre": "Chico",
-        "precio": 4000
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Q’oreo",
@@ -56,16 +35,9 @@
     "disponible": true,
     "imagen": "images/q-oreo.webp.jpg",
     "tamaños": [
-      {
-        "nombre": "Grande",
-        "precio": 5500
-      },
-      {
-        "nombre": "Chico",
-        "precio": 4000
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Bocao Frutal",
@@ -73,16 +45,9 @@
     "disponible": true,
     "imagen": "images/bocao-frutal.webp.jpg",
     "tamaños": [
-      {
-        "nombre": "Grande",
-        "precio": 5500
-      },
-      {
-        "nombre": "Chico",
-        "precio": 4000
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Bocao Lemon",
@@ -90,15 +55,9 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Grande",
-        "precio": 5500
-      },
-      {
-        "nombre": "Chico",
-        "precio": 4000
-    ],
-    "precio": 5500
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Cheesecake Q’Bocao",
@@ -106,16 +65,9 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Grande",
-        "precio": 5500
-      },
-      {
-        "nombre": "Chico",
-        "precio": 4400
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   },
   {
     "nombre": "Yogurt con frutas",
@@ -123,12 +75,8 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5500
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Único", "precio": 5500 }
+    ]
   },
   {
     "nombre": "Ensalada de frutas",
@@ -136,12 +84,8 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5500
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Único", "precio": 5500 }
+    ]
   },
   {
     "nombre": "Ensalada de frutas con crema",
@@ -149,12 +93,8 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5500
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Único", "precio": 5500 }
+    ]
   },
   {
     "nombre": "Ensalada de frutas con DDL",
@@ -162,12 +102,8 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5500
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Único", "precio": 5500 }
+    ]
   },
   {
     "nombre": "Ensalada de frutas mixta",
@@ -175,12 +111,8 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5500
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Único", "precio": 5500 }
+    ]
   },
   {
     "nombre": "Flan con crema",
@@ -188,12 +120,8 @@
     "disponible": true,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5000
-      }
-    ],
-    "precio": 5000
+      { "nombre": "Único", "precio": 5000 }
+    ]
   },
   {
     "nombre": "Flan con DDL",
@@ -201,12 +129,8 @@
     "disponible": true,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5000
-      }
-    ],
-    "precio": 5000
+      { "nombre": "Único", "precio": 5000 }
+    ]
   },
   {
     "nombre": "Flan mixto",
@@ -214,12 +138,8 @@
     "disponible": true,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5000
-      }
-    ],
-    "precio": 5000
+      { "nombre": "Único", "precio": 5000 }
+    ]
   },
   {
     "nombre": "Flan solo",
@@ -227,12 +147,8 @@
     "disponible": true,
     "imagen": "images/flan-solo.webp.jpg",
     "tamaños": [
-      {
-        "nombre": "Único",
-        "precio": 5000
-      }
-    ],
-    "precio": 4000
+      { "nombre": "Único", "precio": 5000 }
+    ]
   },
   {
     "nombre": "Tres Leches",
@@ -240,15 +156,8 @@
     "disponible": true,
     "imagen": "images/tres-leches.webp.jpg",
     "tamaños": [
-      {
-        "nombre": "Grande",
-        "precio": 5500
-      },
-      {
-        "nombre": "Chico",
-        "precio": 4000
-      }
-    ],
-    "precio": 5500
+      { "nombre": "Grande", "precio": 5500 },
+      { "nombre": "Chico", "precio": 4000 }
+    ]
   }
 ]
