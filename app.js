@@ -2,7 +2,7 @@ const grid = document.getElementById('grid');
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
-// Cargar productos
+// === CARGAR PRODUCTOS ===
 fetch('data/postres.json')
   .then(r => r.json())
   .then(items => {
@@ -45,7 +45,7 @@ fetch('data/postres.json')
     grid.appendChild(frag);
   });
 
-// --- Carrito ---
+// === CARRITO ===
 let cart = [];
 const cartModal = document.getElementById('cartModal');
 const cartItemsList = document.getElementById('cartItems');
@@ -67,11 +67,9 @@ grid.addEventListener('click', e => {
     }
 
     const existente = cart.find(it => it.nombre === nombre && it.detalle === detalle);
-    if (existente) {
-      existente.cantidad++;
-    } else {
-      cart.push({ nombre, precio, detalle, cantidad: 1 });
-    }
+    if (existente) existente.cantidad++;
+    else cart.push({ nombre, precio, detalle, cantidad: 1 });
+
     updateCart();
   }
 });
@@ -93,11 +91,11 @@ function updateCart() {
   cartCount.textContent = cart.reduce((t,it)=>t+it.cantidad,0);
 }
 
-openCartBtn.onclick = () => { cartModal.style.display = 'block'; };
-closeCartBtn.onclick = () => { cartModal.style.display = 'none'; };
-cartModal.onclick = (e) => { if (e.target === cartModal) cartModal.style.display = 'none'; };
+openCartBtn.onclick = () => cartModal.style.display = 'block';
+closeCartBtn.onclick = () => cartModal.style.display = 'none';
+cartModal.onclick = e => { if (e.target === cartModal) cartModal.style.display = 'none'; };
 
-// --- Checkout modal ---
+// === CHECKOUT ===
 const checkoutModal = document.getElementById('checkoutModal');
 const checkoutForm = document.getElementById('checkoutForm');
 const closeCheckoutBtn = document.querySelector('.close-checkout');
@@ -121,9 +119,8 @@ function renderResumen(){
   pedidoResumen.innerHTML = resumen;
 }
 
-closeCheckoutBtn.onclick = () => { checkoutModal.style.display = 'none'; };
-checkoutModal.onclick = (e) => { if (e.target === checkoutModal) checkoutModal.style.display = 'none'; };
-
+closeCheckoutBtn.onclick = () => checkoutModal.style.display = 'none';
+checkoutModal.onclick = e => { if (e.target === checkoutModal) checkoutModal.style.display = 'none'; };
 checkoutForm.pago.addEventListener('change', () => {
   transferInfo.style.display = checkoutForm.pago.value === 'transferencia' ? 'block' : 'none';
 });
@@ -140,11 +137,10 @@ checkoutForm.addEventListener('submit', e => {
   cart.forEach(it => mensaje += `- ${it.nombre} ${it.detalle? '('+it.detalle+')':''} x${it.cantidad} $${it.precio}\n`);
   mensaje += `Total: $${cart.reduce((t, it) => t + (it.precio * it.cantidad), 0)}\n\n`;
   mensaje += `Cliente: ${nombre}\nDirección: ${direccion} CP:${cp} ${piso ? 'Piso/Depto:' + piso : ''}\n`;
-  if (pago === 'transferencia') {
-    mensaje += `\nMétodo de pago: Transferencia\nAlias: TU.ALIAS.AQUI\nCBU: TU.CBU.AQUI\n`;
-  } else {
-    mensaje += `\nMétodo de pago: Efectivo\n`;
-  }
+  mensaje += pago === 'transferencia'
+    ? `\nMétodo de pago: Transferencia\nAlias: roscamacaro.mp\nCBU: 0000003100057371117495\n`
+    : `\nMétodo de pago: Efectivo\n`;
+
   const url = `https://wa.me/5491152619603?text=${encodeURIComponent(mensaje)}`;
   window.open(url, '_blank');
   checkoutModal.style.display = 'none';
@@ -152,62 +148,59 @@ checkoutForm.addEventListener('submit', e => {
   updateCart();
 });
 
-// --- Estado abierto/cerrado ---
+// === ESTADO LOCAL (ABIERTO / CERRADO) ===
 const estadoLocal = document.getElementById('estadoLocal');
 
 function actualizarEstado() {
   const ahora = new Date();
-  const ahoraAR = new Date(
-    ahora.toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" })
-  );
-
+  const ahoraAR = new Date(ahora.toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" }));
   const hora = ahoraAR.getHours();
   const minuto = ahoraAR.getMinutes();
   const dia = ahoraAR.getDay(); // 0=Dom, 1=Lun, ..., 6=Sáb
 
-  const formatHora = h => (h < 10 ? "0" + h : h);
-  const formatMin = m => (m < 10 ? "0" + m : m);
-
   const horaActualMin = hora * 60 + minuto;
   let abierto = false;
-  let proximaApertura = null;
   let textoHorario = "";
+  let proximaApertura = null;
 
-  if (dia >= 1 && dia <= 5) { // Lunes a Viernes
-    const apertura = 19 * 60; // 19:00
-    const cierre = 24 * 60;  // 00:00
+  // Horarios definidos
+  const horarios = {
+    lunesViernes: { apertura: 19 * 60, cierre: 24 * 60 },
+    sabado: { apertura: 12 * 60, cierre: 23 * 60 }
+  };
+
+  if (dia >= 1 && dia <= 5) {
     textoHorario = "Lun–Vie 19:00–00:00";
-    if (horaActualMin >= apertura || horaActualMin < 0) abierto = true;
-    else proximaApertura = apertura;
-  } else if (dia === 6) { // Sábado
-    const apertura = 12 * 60; // 12:00
-    const cierre = 23 * 60;  // 23:00
+    if (horaActualMin >= horarios.lunesViernes.apertura || hora < 0) abierto = true;
+    else proximaApertura = horarios.lunesViernes.apertura;
+  } else if (dia === 6) {
     textoHorario = "Sáb 12:00–23:00";
-    if (horaActualMin >= apertura && horaActualMin < cierre) abierto = true;
-    else proximaApertura = apertura;
-  } else { // Domingo
+    if (horaActualMin >= horarios.sabado.apertura && horaActualMin < horarios.sabado.cierre) abierto = true;
+    else proximaApertura = horarios.sabado.apertura;
+  } else {
     textoHorario = "Domingo sin atención";
   }
 
+  // Mostrar estado
   if (abierto) {
     estadoLocal.textContent = `Abierto (${textoHorario})`;
     estadoLocal.className = "estado-local estado-abierto";
   } else {
+    let mensaje = `Cerrado (${textoHorario})`;
+
     if (proximaApertura !== null) {
       const minutosRestantes = proximaApertura - horaActualMin;
       if (minutosRestantes > 0) {
         const horas = Math.floor(minutosRestantes / 60);
         const minutos = minutosRestantes % 60;
-        estadoLocal.textContent = `Cerrado (abrimos en ${horas}h ${minutos}min)`;
-      } else {
-        estadoLocal.textContent = `Cerrado (${textoHorario})`;
+        mensaje = `Cerrado (abrimos en ${horas}h ${minutos}min)`;
       }
-    } else {
-      estadoLocal.textContent = `Cerrado (${textoHorario})`;
     }
+
+    estadoLocal.textContent = mensaje;
     estadoLocal.className = "estado-local estado-cerrado";
   }
 }
 
 actualizarEstado();
-setInterval(actualizarEstado, 60000); // refrescar cada minuto
+setInterval(actualizarEstado, 60000); // Actualiza cada minuto
