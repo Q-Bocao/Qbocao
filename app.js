@@ -6,7 +6,6 @@ if (year) year.textContent = new Date().getFullYear();
 fetch('data/postres.json')
   .then(r => r.json())
   .then(items => {
-    // ordenar disponibles primero y alfabético después
     items.sort((a, b) => (b.disponible - a.disponible) || a.nombre.localeCompare(b.nombre));
 
     const frag = document.createDocumentFragment();
@@ -14,17 +13,14 @@ fetch('data/postres.json')
       const card = document.createElement('article');
       card.className = 'card';
 
-      // Imagen
       const img = document.createElement('img');
       img.alt = item.nombre;
       img.src = item.imagen && item.imagen.trim() ? item.imagen : 'images/logo.png';
       card.appendChild(img);
 
-      // Contenido
       const c = document.createElement('div');
       c.className = 'card-content';
 
-      // selector de tamaño
       let sizeOptions = '';
       if (item.tamaños && item.tamaños.length) {
         sizeOptions = `<label style="display:block;margin-top:5px;">Tamaño:
@@ -59,7 +55,6 @@ const openCartBtn = document.getElementById('openCart');
 const closeCartBtn = document.querySelector('.close-cart');
 const cartCount = document.getElementById('cartCount');
 
-// Añadir al carrito
 grid.addEventListener('click', e => {
   if (e.target.classList.contains('add-to-cart')) {
     const nombre = e.target.dataset.nombre;
@@ -71,7 +66,6 @@ grid.addEventListener('click', e => {
       detalle = sizeSelect.options[sizeSelect.selectedIndex].text.split('-')[0].trim();
     }
 
-    // buscar si ya existe
     const existente = cart.find(it => it.nombre === nombre && it.detalle === detalle);
     if (existente) {
       existente.cantidad++;
@@ -161,32 +155,56 @@ checkoutForm.addEventListener('submit', e => {
 // --- Estado abierto/cerrado ---
 const estadoLocal = document.getElementById('estadoLocal');
 
-function actualizarEstado(){
+function actualizarEstado() {
   const ahora = new Date();
-  const hora = ahora.getHours();
-  const dia = ahora.getDay(); // 0=Dom, 1=Lun, ..., 6=Sab
+  const ahoraAR = new Date(
+    ahora.toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" })
+  );
 
-  if (dia >= 1 && dia <= 5) { 
-    // Lunes a Viernes: 19 a 00 hs
-    if (hora >= 19 || hora < 0) {
-      estadoLocal.textContent = "Abierto (Lun–Vie 19:00–00:00)";
-      estadoLocal.className = "estado-local estado-abierto";
-    } else {
-      estadoLocal.textContent = "Cerrado (abre a las 19:00)";
-      estadoLocal.className = "estado-local estado-cerrado";
-    }
-  } else if (dia === 6) { 
-    // Sábado: 12 a 23 hs
-    if (hora >= 12 && hora < 23) {
-      estadoLocal.textContent = "Abierto (Sáb 12:00–23:00)";
-      estadoLocal.className = "estado-local estado-abierto";
-    } else {
-      estadoLocal.textContent = "Cerrado (abre el sábado 12:00)";
-      estadoLocal.className = "estado-local estado-cerrado";
-    }
+  const hora = ahoraAR.getHours();
+  const minuto = ahoraAR.getMinutes();
+  const dia = ahoraAR.getDay(); // 0=Dom, 1=Lun, ..., 6=Sáb
+
+  const formatHora = h => (h < 10 ? "0" + h : h);
+  const formatMin = m => (m < 10 ? "0" + m : m);
+
+  const horaActualMin = hora * 60 + minuto;
+  let abierto = false;
+  let proximaApertura = null;
+  let textoHorario = "";
+
+  if (dia >= 1 && dia <= 5) { // Lunes a Viernes
+    const apertura = 19 * 60; // 19:00
+    const cierre = 24 * 60;  // 00:00
+    textoHorario = "Lun–Vie 19:00–00:00";
+    if (horaActualMin >= apertura || horaActualMin < 0) abierto = true;
+    else proximaApertura = apertura;
+  } else if (dia === 6) { // Sábado
+    const apertura = 12 * 60; // 12:00
+    const cierre = 23 * 60;  // 23:00
+    textoHorario = "Sáb 12:00–23:00";
+    if (horaActualMin >= apertura && horaActualMin < cierre) abierto = true;
+    else proximaApertura = apertura;
+  } else { // Domingo
+    textoHorario = "Domingo sin atención";
+  }
+
+  if (abierto) {
+    estadoLocal.textContent = `Abierto (${textoHorario})`;
+    estadoLocal.className = "estado-local estado-abierto";
   } else {
-    // Domingo: cerrado
-    estadoLocal.textContent = "Cerrado (domingo sin atención)";
+    if (proximaApertura !== null) {
+      const minutosRestantes = proximaApertura - horaActualMin;
+      if (minutosRestantes > 0) {
+        const horas = Math.floor(minutosRestantes / 60);
+        const minutos = minutosRestantes % 60;
+        estadoLocal.textContent = `Cerrado (abrimos en ${horas}h ${minutos}min)`;
+      } else {
+        estadoLocal.textContent = `Cerrado (${textoHorario})`;
+      }
+    } else {
+      estadoLocal.textContent = `Cerrado (${textoHorario})`;
+    }
     estadoLocal.className = "estado-local estado-cerrado";
   }
 }
