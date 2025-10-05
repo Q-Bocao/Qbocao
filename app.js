@@ -169,33 +169,37 @@ function actualizarEstado() {
   let abierto = false;
   let proximaApertura = null;
 
-  if (dia >= 1 && dia <= 5) { // Lunes a Viernes
-    const apertura = 19 * 60;
-    const cierre = 24 * 60;
-    if (horaActualMin >= apertura || horaActualMin < 0) abierto = true;
-    else proximaApertura = apertura;
-  } else if (dia === 6) { // Sábado
-    const apertura = 12 * 60;
-    const cierre = 23 * 60;
-    if (horaActualMin >= apertura && horaActualMin < cierre) abierto = true;
-    else proximaApertura = apertura;
+  const aperturaLunesViernes = 19 * 60;
+  const cierreLunesViernes = 24 * 60;
+  const aperturaSabado = 12 * 60;
+  const cierreSabado = 23 * 60;
+
+  if (dia >= 1 && dia <= 5) {
+    if (horaActualMin >= aperturaLunesViernes || horaActualMin < 0) abierto = true;
+    else proximaApertura = aperturaLunesViernes;
+  } else if (dia === 6) {
+    if (horaActualMin >= aperturaSabado && horaActualMin < cierreSabado) abierto = true;
+    else if (horaActualMin >= cierreSabado) {
+      // sábado después de cerrar → lunes 19:00
+      proximaApertura = ((2 * 24 + 19) * 60); // 2 días después + 19h
+    } else proximaApertura = aperturaSabado;
+  } else if (dia === 0) {
+    // domingo cerrado → lunes 19:00
+    proximaApertura = (24 + 19) * 60;
   }
 
   if (abierto) {
     estadoLocal.innerHTML = `<span class="parpadeo">🟢 Abierto</span>`;
     estadoLocal.className = "estado-local estado-abierto";
-  } else if (dia === 0) {
-    estadoLocal.textContent = `Cerrado (domingo sin atención)`;
-    estadoLocal.className = "estado-local estado-cerrado";
   } else {
     if (proximaApertura !== null) {
       let minutosRestantes = proximaApertura - horaActualMin;
-      if (minutosRestantes < 0) minutosRestantes += 24 * 60; // Si ya pasó, hasta el día siguiente
+      if (minutosRestantes < 0) minutosRestantes += 24 * 60;
       const horas = Math.floor(minutosRestantes / 60);
       const minutos = minutosRestantes % 60;
       estadoLocal.textContent = `Cerrado (abrimos en ${horas}h ${minutos}min)`;
     } else {
-      estadoLocal.textContent = `Cerrado`;
+      estadoLocal.textContent = `Cerrado (domingo sin atención)`;
     }
     estadoLocal.className = "estado-local estado-cerrado";
   }
