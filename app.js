@@ -141,7 +141,7 @@ checkoutForm.addEventListener('submit', e => {
   mensaje += `Total: $${cart.reduce((t, it) => t + (it.precio * it.cantidad), 0)}\n\n`;
   mensaje += `Cliente: ${nombre}\nDirección: ${direccion} CP:${cp} ${piso ? 'Piso/Depto:' + piso : ''}\n`;
   if (pago === 'transferencia') {
-    mensaje += `\nMétodo de pago: Transferencia\nAlias: TU.ALIAS.AQUI\nCBU: TU.CBU.AQUI\n`;
+    mensaje += `\nMétodo de pago: Transferencia\nAlias: roscamacaro.mp\nCBU: 0000003100057371117495\n`;
   } else {
     mensaje += `\nMétodo de pago: Efectivo\n`;
   }
@@ -170,33 +170,30 @@ function actualizarEstado() {
   let proximaApertura = null;
 
   if (dia >= 1 && dia <= 5) { // Lunes a Viernes
-    const apertura = 19 * 60; // 19:00
-    const cierre = 24 * 60;  // 00:00
+    const apertura = 19 * 60;
+    const cierre = 24 * 60;
     if (horaActualMin >= apertura || horaActualMin < 0) abierto = true;
     else proximaApertura = apertura;
   } else if (dia === 6) { // Sábado
-    const apertura = 12 * 60; // 12:00
-    const cierre = 23 * 60;  // 23:00
+    const apertura = 12 * 60;
+    const cierre = 23 * 60;
     if (horaActualMin >= apertura && horaActualMin < cierre) abierto = true;
     else proximaApertura = apertura;
   }
 
   if (abierto) {
-    estadoLocal.textContent = `Abierto`;
+    estadoLocal.innerHTML = `<span class="parpadeo">🟢 Abierto</span>`;
     estadoLocal.className = "estado-local estado-abierto";
   } else if (dia === 0) {
     estadoLocal.textContent = `Cerrado (domingo sin atención)`;
     estadoLocal.className = "estado-local estado-cerrado";
   } else {
     if (proximaApertura !== null) {
-      const minutosRestantes = proximaApertura - horaActualMin;
-      if (minutosRestantes > 0) {
-        const horas = Math.floor(minutosRestantes / 60);
-        const minutos = minutosRestantes % 60;
-        estadoLocal.textContent = `Cerrado (abrimos en ${horas}h ${minutos}min)`;
-      } else {
-        estadoLocal.textContent = `Cerrado`;
-      }
+      let minutosRestantes = proximaApertura - horaActualMin;
+      if (minutosRestantes < 0) minutosRestantes += 24 * 60; // Si ya pasó, hasta el día siguiente
+      const horas = Math.floor(minutosRestantes / 60);
+      const minutos = minutosRestantes % 60;
+      estadoLocal.textContent = `Cerrado (abrimos en ${horas}h ${minutos}min)`;
     } else {
       estadoLocal.textContent = `Cerrado`;
     }
