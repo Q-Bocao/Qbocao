@@ -5,7 +5,7 @@
     "disponible": true,
     "imagen": "images/beso-de-angel-qbocao.webp.jpg",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   },
   {
@@ -14,7 +14,7 @@
     "disponible": true,
     "imagen": "images/bocao-tentacion.webp.jpg",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   },
   {
@@ -23,7 +23,7 @@
     "disponible": true,
     "imagen": "images/chocobocao.webp.jpg",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   },
   {
@@ -32,7 +32,7 @@
     "disponible": true,
     "imagen": "images/q-oreo.webp.jpg",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   },
   {
@@ -41,7 +41,7 @@
     "disponible": true,
     "imagen": "images/bocao-frutal.webp.jpg",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   },
   {
@@ -50,7 +50,7 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   },
   {
@@ -59,7 +59,7 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   },
   {
@@ -68,7 +68,7 @@
     "disponible": false,
     "imagen": "images/logo.png.png",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   },
   {
@@ -77,7 +77,7 @@
     "disponible": true,
     "imagen": "images/tres-leches.webp.jpg",
     "tamaños": [
-      { "nombre": "Único", "precio": 5500 }
+      { "nombre": "Precio", "precio": 5500 }
     ]
   }
 ]
