@@ -230,3 +230,64 @@ a:hover{color:var(--accent-2)}
 .cerrar-img:hover {
   color: #ffb703;
 }
+
+/* === Ajustes finos para vista móvil más compacta === */
+@media (max-width: 768px) {
+  .container {
+    margin: 16px auto;
+    padding: 0 12px;
+  }
+
+  .hero {
+    margin-bottom: 0;
+    gap: 6px;
+  }
+
+  .grid {
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+  }
+
+  .card-content {
+    padding: 10px 12px 8px;
+  }
+
+  .hero h2 {
+    margin-bottom: 4px;
+  }
+
+  footer.site-footer {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 12px auto;
+  }
+
+  .hero {
+    gap: 4px;
+  }
+
+  .grid {
+    gap: 10px;
+  }
+
+  .card img {
+    height: 130px;
+  }
+
+  .card-content {
+    padding: 8px 10px;
+  }
+
+  footer.site-footer {
+    padding: 16px;
+  }
+}
