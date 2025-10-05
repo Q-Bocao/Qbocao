@@ -6,15 +6,12 @@
   <title>Q’bocao — Hecho para tentarte</title>
   <meta name="description" content="Q’bocao: postres artesanales. Hecho para tentarte.">
 
-  <!-- Favicon con tu logo -->
   <link rel="icon" href="images/logo.png.png" type="image/png">
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-  <!-- Font Awesome para iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
   <header class="site-header">
     <div class="brand">
@@ -29,6 +26,7 @@
       <span id="estadoLocal" class="estado-local"></span>
       <a href="#menu">Menú</a>
       <a href="#contacto">Contacto</a>
+      <a href="#horarios">Horarios</a>
     </nav>
   </header>
 
@@ -41,21 +39,25 @@
 
     <div id="grid" class="grid"></div>
 
+    <!-- Nueva sección de horarios -->
+    <section id="horarios" style="margin-top:48px;">
+      <h3>🕒 Horarios de atención</h3>
+      <p class="grid-info">Podés visitarnos o hacer tus pedidos dentro de nuestros horarios de atención:</p>
+      <ul style="list-style:none; padding:0; line-height:1.8;">
+        <li><strong>Lunes a Viernes:</strong> 19:00 – 00:00</li>
+        <li><strong>Sábados:</strong> 12:00 – 23:00</li>
+        <li><strong>Domingos:</strong> Cerrado 💤</li>
+      </ul>
+    </section>
+
     <section id="contacto" style="margin-top:32px">
       <h3>Contacto</h3>
       <p class="grid-info">¿Tenés alguna consulta? Estamos acá para ayudarte con tu pedido o despejar tus dudas. ¡Escribinos y te respondemos al instante!</p>
       
-      <!-- Redes sociales -->
       <div class="social-icons">
-        <a href="https://www.instagram.com/qbocao.ar/" target="_blank" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/people/QBocao/61580235027548/" target="_blank" aria-label="Facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://wa.me/5491152619603" target="_blank" aria-label="WhatsApp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
+        <a href="https://www.instagram.com/qbocao.ar/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/people/QBocao/61580235027548/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://wa.me/5491152619603" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       </div>
     </section>
   </main>
@@ -64,7 +66,7 @@
     <p>© <span id="year"></span> Q’bocao — JUCA®</p>
   </footer>
 
-  <!-- Modal carrito -->
+  <!-- Modales existentes -->
   <div id="cartModal" class="modal">
     <div class="cart-content">
       <span class="close-cart">&times;</span>
@@ -75,7 +77,6 @@
     </div>
   </div>
 
-  <!-- Modal checkout formulario -->
   <div id="checkoutModal" class="modal">
     <div class="checkout-content">
       <span class="close-checkout">&times;</span>
@@ -102,22 +103,17 @@
     </div>
   </div>
 
-  <!-- Botón flotante carrito -->
   <button id="openCart" class="floating-cart">🛒 <span id="cartCount">0</span></button>
 
-  <!-- Modal para ampliar imágenes de productos -->
   <div id="imgModal" class="modal-img">
     <span class="cerrar-img">&times;</span>
     <img class="modal-img-content" id="imgAmpliada">
   </div>
 
-  <!-- Script de tu app -->
   <script src="app.js"></script>
 
-  <!-- Script para ampliar imágenes -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Espera a que app.js cargue las imágenes en el grid
       const observer = new MutationObserver(() => {
         const imagenes = document.querySelectorAll('#grid img');
         if (imagenes.length > 0) {
@@ -131,7 +127,6 @@
         const modal = document.getElementById('imgModal');
         const modalImg = document.getElementById('imgAmpliada');
         const cerrar = document.querySelector('.cerrar-img');
-
         imagenes.forEach(img => {
           img.style.cursor = 'zoom-in';
           img.addEventListener('click', () => {
@@ -139,7 +134,6 @@
             modalImg.src = img.src;
           });
         });
-
         cerrar.onclick = () => (modal.style.display = 'none');
         modal.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
       }
