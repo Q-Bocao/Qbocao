@@ -105,6 +105,45 @@
   <!-- Botón flotante carrito -->
   <button id="openCart" class="floating-cart">🛒 <span id="cartCount">0</span></button>
 
+  <!-- Modal para ampliar imágenes de productos -->
+  <div id="imgModal" class="modal-img">
+    <span class="cerrar-img">&times;</span>
+    <img class="modal-img-content" id="imgAmpliada">
+  </div>
+
+  <!-- Script de tu app -->
   <script src="app.js"></script>
+
+  <!-- Script para ampliar imágenes -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Espera a que app.js cargue las imágenes en el grid
+      const observer = new MutationObserver(() => {
+        const imagenes = document.querySelectorAll('#grid img');
+        if (imagenes.length > 0) {
+          initImageModal(imagenes);
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.getElementById('grid'), { childList: true, subtree: true });
+
+      function initImageModal(imagenes) {
+        const modal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('imgAmpliada');
+        const cerrar = document.querySelector('.cerrar-img');
+
+        imagenes.forEach(img => {
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', () => {
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+          });
+        });
+
+        cerrar.onclick = () => (modal.style.display = 'none');
+        modal.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
+      }
+    });
+  </script>
 </body>
 </html>
